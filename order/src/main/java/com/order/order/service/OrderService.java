@@ -38,7 +38,7 @@ public class OrderService {
 
         try {
             InventoryDTO inventoryResponse = inventoryWebClient.get()
-                    .uri(uriBuilder -> uriBuilder.path("/api/v1/item/{itemId}").build(itemId))
+                    .uri(uriBuilder -> uriBuilder.path("/item/{itemId}").build(itemId))
                     .retrieve()
                     .bodyToMono(InventoryDTO.class)
                     .block();
@@ -47,7 +47,7 @@ public class OrderService {
 
             Integer productId = inventoryResponse.getProductId();
             ProductDTO productResponse = productWebClient.get()
-                    .uri(uriBuilder -> uriBuilder.path("/api/v1/product/{productId}").build(productId))
+                    .uri(uriBuilder -> uriBuilder.path("/product/{productId}").build(productId))
                     .retrieve()
                     .bodyToMono(ProductDTO.class)
                     .block();
